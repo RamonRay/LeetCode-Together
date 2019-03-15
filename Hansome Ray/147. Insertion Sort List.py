@@ -41,7 +41,6 @@ def read(head):
 
 
 
-
 newQuickSort(nums)
 head=init([4,2,1,3])
 head=insertionSortList(head)
