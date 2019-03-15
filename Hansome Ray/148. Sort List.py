@@ -20,14 +20,16 @@ class Solution(object):
             slow = slow.next
             fast = fast.next.next
         slowAhead.next = None
-        #åˆ†æ²»æ³•é€’å½’åˆ†è§£é“¾è¡¨
+        #·ÖÖÎ·¨µÝ¹é·Ö½âÁ´±í
         l1 = self.sortList(head)
         l2 = self.sortList(slow)
+        #µÝ¹éºóµÄÁ´±íÒÑ¾­ÓÐÐò
+        #ºÏ²¢Á½¸öÓÐÐòÁ´±í
         return self.mergeSort(l1, l2)
 
     def mergeSort(self, l1, l2):
         p = dummy = ListNode(0)
-        #åˆå¹¶æœ‰åºé“¾è¡¨
+        #ºÏ²¢ÓÐÐòÁ´±í
         while l1 and l2:
             if l1.val > l2.val:
                 p.next = l2
@@ -36,6 +38,6 @@ class Solution(object):
                 p.next = l1
                 l1 = l1.next
             p = p.next
-        #æŽ¥ä¸Šæ²¡æœ‰åœ¨å¾ªçŽ¯ä¸­ç©·å°½çš„é“¾è¡¨
+        #½ÓÉÏÃ»ÓÐÔÚÑ­»·ÖÐÇî¾¡µÄÁ´±í
         p.next = l1 or l2
         return dummy.next
