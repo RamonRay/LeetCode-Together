@@ -37,6 +37,12 @@ def read(head):
    while head!=None:
       print head.val
       head=head.next
+
+
+
+
+
+newQuickSort(nums)
 head=init([4,2,1,3])
 head=insertionSortList(head)
 read(head)

@@ -22,6 +22,10 @@ def quickSort(nums,left,right):
     nums[low]=key
     quickSort(nums,left,low-1)
     quickSort(nums,low+1,right)
+def newQuickSort(nums):
+    if len(nums)<=1:
+        return nums
+    return newQuickSort([i for i in nums[1:] if nums[i] <= nums[0]]) + [nums[0]] + newQuickSort([i for i in nums[1:] if nums[i] > nums[0]])
 nums=[2,0,2,1,1,0]
 
-print sortColors(nums)
+print newQuickSort(nums)
