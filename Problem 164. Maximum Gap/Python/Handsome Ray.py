@@ -76,4 +76,4 @@ class Solution(object):
             if tmp>gap:
                 gap=tmp
             prev=i
-        return gap            
+        return gap
