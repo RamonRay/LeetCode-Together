@@ -3,7 +3,7 @@
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
-
+#divide and conquer, 260ms
 class Solution(object):
     def sortList(self, head):
         """
@@ -20,16 +20,16 @@ class Solution(object):
             slow = slow.next
             fast = fast.next.next
         slowAhead.next = None
-        #·ÖÖÎ·¨µÝ¹é·Ö½âÁ´±í
+        #ï¿½ï¿½ï¿½Î·ï¿½ï¿½Ý¹ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½
         l1 = self.sortList(head)
         l2 = self.sortList(slow)
-        #µÝ¹éºóµÄÁ´±íÒÑ¾­ÓÐÐò
-        #ºÏ²¢Á½¸öÓÐÐòÁ´±í
+        #ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
+        #ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         return self.mergeSort(l1, l2)
 
     def mergeSort(self, l1, l2):
         p = dummy = ListNode(0)
-        #ºÏ²¢ÓÐÐòÁ´±í
+        #ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         while l1 and l2:
             if l1.val > l2.val:
                 p.next = l2
@@ -38,6 +38,28 @@ class Solution(object):
                 p.next = l1
                 l1 = l1.next
             p = p.next
-        #½ÓÉÏÃ»ÓÐÔÚÑ­»·ÖÐÇî¾¡µÄÁ´±í
+        #ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½î¾¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         p.next = l1 or l2
         return dummy.next
+# using qs, recording all values 106ms
+class Solution(object):
+    def sortList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head or not head.next:
+            return head
+        listValue=[]
+        tmp=head
+        while tmp:
+            listValue.append(tmp.val)
+            tmp=tmp.next
+        listValue.sort()
+        tmp=head
+        i=0
+        while tmp:
+            tmp.val=listValue[i]
+            i=i+1
+            tmp=tmp.next
+        return head
